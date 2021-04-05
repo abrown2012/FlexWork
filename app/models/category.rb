@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :job
+  has_many :jobs
 end

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :categories
-  resources :contractors
   resources :applicants
   resources :job_applicants
   resources :jobs
