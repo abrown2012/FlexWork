@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 
+  status: MyString
+  employer: one
+  contractor: one
+  category: one
+
+two:
+  name: MyString
+  description: MyText
+  price: 
+  status: MyString
+  employer: two
+  contractor: two
+  category: two
