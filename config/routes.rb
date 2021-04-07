@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get '/employer/signup' => 'employers#new'
-  post '/employer/signup' => 'employers#create'
-  get '/applicant/signup' => 'applicants#new'
-  post '/applicant/signup' => 'applicants#create'
+  # root 'jobs#homepage'
+  # get '/employer/signup' => 'employers#new'
+  # post '/employer/signup' => 'employers#create'
+  # get '/applicant/signup' => 'applicants#new'
+  # post '/applicant/signup' => 'applicants#create'
   resources :categories
   resources :applicants
   resources :job_applicants

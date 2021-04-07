@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 2021_04_05_015640) do
     t.text "description"
     t.float "price"
     t.string "status"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
     t.integer "contractor_id"
     t.integer "employer_id", null: false
     t.integer "category_id", null: false

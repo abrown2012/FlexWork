@@ -1,0 +1,35 @@
+<%= form_for(@job) do |f| %>
+    <%= f.label :"Title:" %>
+    <%= f.text_field :name, required:true %>
+    <br>
+    <br>
+    <%= f.label :"Description:" %>
+    <%= f.text_field :description, required:true %>
+    <br>
+    <br>
+    <%= f.label :"Category:" %>
+    <%= f.text_field :description, required:true %>
+    <br>
+    <br>
+    <%= f.label :"City:" %>
+    <%= f.text_field :city, required:true %>
+    <br>
+    <br>
+    <%= f.label :"State:" %>
+    <%= f.text_field :state, required:true %>
+    <br>
+    <br>
+    <%= f.label :"Zip Code:" %>
+    <%= f.text_field :zip, required:true %>
+    <br>
+    <br>
+    <%= f.label :"Price:" %>
+    <%= f.text_field :price, required:true, step: 2git  %>
+    <br>
+    <br>
+    <%= f.label :"Status:" %>
+    <%= f.email_field :status %>
+    <br>
+    <br>
+    <%= f.submit "Create New Task" %>
+<% end %>
