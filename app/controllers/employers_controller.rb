@@ -8,7 +8,7 @@ class EmployersController < ApplicationController
         @employer = Employer.new(employer_params)
         if @employer.save 
             session[:employer_id] = @employer.id 
-            redirect_to @employer
+            redirect_to @employer, notice: "Your account was successfully created!"
         else 
             render :new
         end 
