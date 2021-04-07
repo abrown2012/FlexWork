@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   # root 'jobs#homepage'
   # get '/employer/signup' => 'employers#new'
   # post '/employer/signup' => 'employers#create'
-  # get '/applicant/signup' => 'applicants#new'
-  # post '/applicant/signup' => 'applicants#create'
+  # get '/contractor/signup' => 'contractors#new'
+  # post '/contractor/signup' => 'contractors#create'
   resources :categories
-  resources :applicants
+  resources :contractors
   resources :job_applicants
   resources :jobs
   resources :employers
