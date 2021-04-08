@@ -1,0 +1,25 @@
+<h2>Sign up in order to apply for tasks and earn</h2>
+
+<%= form_for(@contractor) do |f| %>
+    <%= f.label :"username:" %>
+    <%= f.text_field :username %>
+    <br>
+    <br>
+    <%= f.label :"First Name:" %>
+    <%= f.text_field :first_name %>
+    <br>
+    <br>
+    <%= f.label :"Last Name:" %>
+    <%= f.text_field :last_name %>
+    <br>
+    <br>
+    <%= f.label :"Email:" %>
+    <%= f.email_field :email, required:true %>
+    <br>
+    <br>
+    <%= f.label :"password:" %>
+    <%= f.password_field :password %>
+    <br>
+    <br>
+    <%= f.submit "Create Account" %>
+<% end %>
