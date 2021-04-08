@@ -20,8 +20,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
- gem 'bcrypt', '~> 3.1.7'
-
+gem 'bcrypt', '~> 3.1.7'
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -34,7 +38,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'pry'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -43,9 +46,10 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "bullet"
+  gem 'pry'
 end
 
 group :test do

@@ -4,6 +4,14 @@ class JobsController < ApplicationController
         @job = Job.new
     end 
 
+    def homepage
+        render :homepage
+    end
+
+    def about
+        render :about
+    end
+
     def create
         @job = Job.new(job_params)
         if @job.save 

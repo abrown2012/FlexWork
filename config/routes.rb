@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # root 'jobs#homepage'
+   root 'jobs#homepage'
+   get '/about' => 'jobs#about'
+   
   # get '/employer/signup' => 'employers#new'
   # post '/employer/signup' => 'employers#create'
   # get '/contractor/signup' => 'contractors#new'
