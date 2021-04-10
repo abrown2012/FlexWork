@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_014144) do
     t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
+    t.integer "account_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :contractor_actions, class_name: "Action", foreign_key: "contractor_id"
 
     has_secure_password
-
+    validates :password, confirmation: true, on: :create
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     validates :last_name, presence: true
