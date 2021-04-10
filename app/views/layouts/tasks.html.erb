@@ -12,10 +12,16 @@
   <body>
     <nav>
       <div class="navbar-list">
-          <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
-          <a class="navbar-link <%= root_path%>" href="/about">About</a>
-          <a class="navbar-link <%= new_user_path%>" href="/users/new">Join</a>
-          
+      <% if is_logged_in? %>
+      <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
+      <a class="navbar-link <%= root_path%>" href="/about">About</a>
+      <a class="navbar-link <%= login_path%>" href="/login">Log Out</a>
+    <% else %>
+      
+      <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
+      <a class="navbar-link <%= root_path%>" href="/about">About</a>
+      <a class="navbar-link <%= new_user_path%>" href="/users/new">Join</a>
+    <% end %>
         </div>
     </nav>
     <div class="content">

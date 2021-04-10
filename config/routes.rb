@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
    root 'tasks#homepage'
    get '/about' => 'tasks#about'
+
+   get '/logout' => 'sessions#destroy'
  
    get '/newuser/account_type' => 'sessions#account_type', as: "account_type"
    post '/newuser/account_type' => 'sessions#account_type', as: "complete_signup"

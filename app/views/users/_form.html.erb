@@ -12,13 +12,6 @@
     <%= f.text_field :first_name, class: 'form-control' %><br />
     <%= f.label :last_name, 'Last Name' %>
     <%= f.text_field :last_name, class: 'form-control' %><br />
-    
-
-    <% if !current_user.nil? %>
-        <%= f.label :profile_image, 'Profile Image', class: 'form-label' %>
-        <%= f.file_field :profile_image, class: 'form-control' %><br />
-    <% end %>
-    
     <%= render_account_type_for_form(f) %>
 
     <br>
