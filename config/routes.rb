@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-   root 'jobs#homepage'
-   get '/about' => 'jobs#about'
-   
-  # get '/employer/signup' => 'employers#new'
-  # post '/employer/signup' => 'employers#create'
-  # get '/contractor/signup' => 'contractors#new'
-  # post '/contractor/signup' => 'contractors#create'
-  resources :categories
-  resources :contractors
-  resources :job_applicants
-  resources :jobs
-  resources :employers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "tasks#homepage"
+
+  get '/newuser/account_type' => 'sessions#account_type', as: "account_type"
+  post '/newuser/account_type' => 'sessions#account_type', as: "complete_signup"
+  
+  get '/search' => 'welcome#search'
+  post '/search' => 'welcome#search'
+  
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+  get '/employers' => 'users#employers'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :categories, only: [:index]
+  resources :products 
 end

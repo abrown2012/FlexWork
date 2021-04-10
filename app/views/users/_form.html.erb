@@ -1,0 +1,30 @@
+
+<%= form_for user do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %><br />
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %><br />
+    <%= f.label :password_confirmation, 'Confirm Password' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %><br />
+    <%= f.label :first_name, 'First Name' %>
+    <%= f.text_field :first_name, class: 'form-control' %><br />
+    <%= f.label :last_name, 'Last Name' %>
+    <%= f.text_field :last_name, class: 'form-control' %><br />
+    
+
+    <% if !current_user.nil? %>
+        <%= f.label :profile_image, 'Profile Image', class: 'form-label' %>
+        <%= f.file_field :profile_image, class: 'form-control' %><br />
+    <% end %>
+    
+    <%= render_account_type_for_form(f) %>
+
+    <br>
+    <div class="d-grid gap-2">
+        <% if !current_user.nil? %>
+            <%= f.submit 'Save', class: 'btn btn-outline-dark' %>
+        <% else %>
+            <%= f.submit 'Sign Up', class: 'btn btn-outline-dark' %>
+        <% end %>
+    </div>
+<% end %>

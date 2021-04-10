@@ -10,48 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_015640) do
+ActiveRecord::Schema.define(version: 2021_04_05_014144) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "contractors", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "employers", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "job_applicants", force: :cascade do |t|
-    t.integer "applicant_id", null: false
-    t.integer "job_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["applicant_id"], name: "index_job_applicants_on_applicant_id"
-    t.index ["job_id"], name: "index_job_applicants_on_job_id"
-  end
-
-  create_table "jobs", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.float "price"
     t.string "status"
+    t.string "location_type"
     t.string "city"
     t.string "state"
     t.integer "zip"
@@ -60,12 +26,20 @@ ActiveRecord::Schema.define(version: 2021_04_05_015640) do
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_jobs_on_category_id"
-    t.index ["employer_id"], name: "index_jobs_on_employer_id"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["employer_id"], name: "index_tasks_on_employer_id"
   end
 
-  add_foreign_key "job_applicants", "applicants"
-  add_foreign_key "job_applicants", "jobs"
-  add_foreign_key "jobs", "categories"
-  add_foreign_key "jobs", "employers"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "tasks", "categories"
+  add_foreign_key "tasks", "employers"
 end
