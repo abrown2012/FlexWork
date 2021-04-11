@@ -32,15 +32,17 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
+     
         @task.employer_id = current_user.id
         
 
         if @task.valid?
+            
             @task.save
 
             redirect_to task_path(@task)
         else
-            @task.build_department
+            
 
             render :new
         end
@@ -48,7 +50,7 @@ class TasksController < ApplicationController
 
     private
     def task_params 
-        params.require(:job).permit(:name, :description, :price, :status, :category)
+        params.require(:task).permit(:name, :description, :price, :status, :location_type, :city, :state, :zip)
     end 
 
 end

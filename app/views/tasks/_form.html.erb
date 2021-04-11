@@ -5,6 +5,9 @@
     <%= f.label :"Description:" %>
     <%= f.text_field :description, class: 'form-control' %>
     <br>
+    <%= f.label 'Category:' %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+    <br>
     <%= f.label :"Price:" %>
     <%= f.number_field :price, step: 0.01, class: 'form-control' %>
     <br>
@@ -18,8 +21,16 @@
     <%= f.text_field :city, class: 'form-control' %>
     <br>
     <%= f.label :"State:" %>
-    <%= f.text_field :state, class: 'form-control' %>
+    <%= f.select :state, options_for_select(["AL", "AK", "AZ", "AR",
+    "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
+    "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", 
+    "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", 
+    "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", 
+    "UT", "VT", "VA", "WA", "WV", "WI", "WY" ]), class: 'form-control' %>
     <br>
     <%= f.label :"Zip Code:" %>
     <%= f.text_field :zip, class: 'form-control' %>
+    <div class="d-grid gap-2">
+        <%= f.submit 'Submit', class: 'btn btn-custom' %>
+    </div>
 <% end %>
