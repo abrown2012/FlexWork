@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_000855) do
     t.string "location_type"
     t.string "city"
     t.string "state"
-    t.integer "zip"
+    t.string "zip"
     t.integer "employer_id", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false

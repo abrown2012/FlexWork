@@ -7,5 +7,19 @@
     <br>
     <%= f.label :"Price:" %>
     <%= f.number_field :price, step: 0.01, class: 'form-control' %>
+    <br>
     <%= f.label :"Status:" %>
+    <%= f.select :status, options_for_select(["open", "assigned", "cancelled", "closed"]), class: 'form-control'%>
+    <br>
+    <%= f.label :"Location Type:" %>
+    <%= f.select :location_type, options_for_select(["online", "physical"]), class: 'form-control' %>
+    <br>
+    <%= f.label :"City:" %>
+    <%= f.text_field :city, class: 'form-control' %>
+    <br>
+    <%= f.label :"State:" %>
+    <%= f.text_field :state, class: 'form-control' %>
+    <br>
+    <%= f.label :"Zip Code:" %>
+    <%= f.text_field :zip, class: 'form-control' %>
 <% end %>
