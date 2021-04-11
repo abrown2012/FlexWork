@@ -1,35 +1,13 @@
-<%= form_for(@job) do |f| %>
-    <%= f.label :"Title:" %>
-    <%= f.text_field :name, required:true %>
-    <br>
-    <br>
-    <%= f.label :"Description:" %>
-    <%= f.text_field :description, required:true %>
-    <br>
-    <br>
-    <%= f.label :"Category:" %>
-    <%= f.text_field :description, required:true %>
-    <br>
-    <br>
-    <%= f.label :"City:" %>
-    <%= f.text_field :city, required:true %>
-    <br>
-    <br>
-    <%= f.label :"State:" %>
-    <%= f.text_field :state, required:true %>
-    <br>
-    <br>
-    <%= f.label :"Zip Code:" %>
-    <%= f.text_field :zip, required:true %>
-    <br>
-    <br>
-    <%= f.label :"Price:" %>
-    <%= f.number_field :price, required:true, step: 0.01 %>
-    <br>
-    <br>
-    <%= f.label :"Status:" %>
-    <%= f.email_field :status %>
-    <br>
-    <br>
-    <%= f.submit "Create New Task" %>
-<% end %>
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h1>Create a New Task</h1>
+        <%= render partial: 'layouts/errors', locals: { object: @task } %>
+        <%= render partial: 'form', locals: { task: @task, categories: @categories, user: current_user } %>
+        
+        <br />
+        <%= link_to 'Cancel', user_path( current_user ), class: 'btn btn-secondary' %>
+        <br />
+    </div>
+</div>

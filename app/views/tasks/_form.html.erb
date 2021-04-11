@@ -1,0 +1,11 @@
+<%= form_for task do |f| %>
+    <%= f.label :"Title:" %>
+    <%= f.text_field :name,  class: 'form-control' %>
+    <br>
+    <%= f.label :"Description:" %>
+    <%= f.text_field :description, class: 'form-control' %>
+    <br>
+    <%= f.label :"Price:" %>
+    <%= f.number_field :price, step: 0.01, class: 'form-control' %>
+    <%= f.label :"Status:" %>
+<% end %>

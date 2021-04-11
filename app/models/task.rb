@@ -2,7 +2,7 @@ class Task < ApplicationRecord
   belongs_to :employer, class_name: "User", dependent: :destroy
   belongs_to :category
   
-  va;odates :name , presence: true 
+  validates :name , presence: true 
   validates :description, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :location_type, presence: true 
