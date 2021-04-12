@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
-    belongs_to :task
+    has_many :tasks
+    has_many :employers, through: :tasks
     validates :name , presence: true 
 end
+

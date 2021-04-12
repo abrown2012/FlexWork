@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
-  belongs_to :employer, class_name: "User", dependent: :destroy
+  belongs_to :employer, class_name: "User"
   belongs_to :category
+  
   
   validates :name , presence: true 
   validates :description, presence: true
@@ -8,5 +9,14 @@ class Task < ApplicationRecord
   validates :location_type, presence: true 
   validates :state, length: { is: 2 }
   validates :zip, length: { is: 5 }
+
+  scope :related_to, ->( task ){ where(category_id: task.category_id).limit(10) }
+
+  def category_attributes=(attributes)
+    if attributes[:name] != ""
+        self.category = Category.find_or_create_by(name: attributes[:category])
+        self.category.update(attributes)
+    end
+end
 
 end

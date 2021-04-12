@@ -14,10 +14,8 @@ ActiveRecord::Schema.define(version: 2021_04_11_000855) do
 
   create_table "categories", force: :cascade do |t|
     t.text "name"
-    t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["task_id"], name: "index_categories_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -29,12 +27,10 @@ ActiveRecord::Schema.define(version: 2021_04_11_000855) do
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.integer "employer_id", null: false
-    t.integer "category_id", null: false
+    t.integer "employer_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_tasks_on_category_id"
-    t.index ["employer_id"], name: "index_tasks_on_employer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,6 +44,4 @@ ActiveRecord::Schema.define(version: 2021_04_11_000855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "tasks", "categories"
-  add_foreign_key "tasks", "employers"
 end

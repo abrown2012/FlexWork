@@ -9,10 +9,8 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :city
       t.string :state
       t.string :zip
-     
-      t.belongs_to :employer, null: false, foreign_key: true
-      t.belongs_to :category, null: false, foreign_key: true
-
+      t.integer :employer_id
+      t.integer :category_id
       t.timestamps
     end
   end

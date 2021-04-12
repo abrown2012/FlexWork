@@ -4,6 +4,10 @@ class UsersController < ApplicationController
         @user = User.new
     end 
 
+    def employers
+        @employers = User.is_an_employer
+    end
+
     def create
         
         @user = User.new(user_params)
