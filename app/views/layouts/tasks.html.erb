@@ -16,6 +16,9 @@
       <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
       <a class="navbar-link <%= root_path%>" href="/about">About</a>
       <a class="navbar-link <%= root_path%>" href="/logout">Log Out</a>
+      <% if current_user.account_type == 2 %>
+        <a class="navbar-link <%= root_path%>" href="/tasks/new">New Task</a>
+      <% end %>
     <% else %>
       
       <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>

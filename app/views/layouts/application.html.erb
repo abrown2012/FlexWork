@@ -13,9 +13,12 @@
     <nav>
       <div class="navbar-list">
       <% if is_logged_in? %>
-      <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
-      <a class="navbar-link <%= root_path%>" href="/about">About</a>
-      <a class="navbar-link <%= root_path%>" href="/logout">Log Out</a>
+        <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
+        <a class="navbar-link <%= root_path%>" href="/about">About</a>
+        <a class="navbar-link <%= root_path%>" href="/logout">Log Out</a>
+        <% if current_user.account_type == 2 %>
+          <a class="navbar-link <%= root_path%>" href="/logout">Log Out</a>
+        <% end %>
     <% else %>
       
       <a class="navbar-link <%= root_path%>" href="/">FlexWork</a>
