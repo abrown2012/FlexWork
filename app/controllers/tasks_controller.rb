@@ -34,7 +34,17 @@ class TasksController < ApplicationController
 
     def create
         binding.pry
-        @task = Task.new(task_params)
+        @task = Task.new(task_params(:name, 
+        :description, 
+        :price, 
+        :status, 
+        :location_type, 
+        :city, 
+        :state, 
+        :zip, 
+        :category_id, 
+        category_attributes: [:name]))
+
         @task.employer_id = current_user.id
 
         if @task.valid?
@@ -42,7 +52,7 @@ class TasksController < ApplicationController
 
             redirect_to task_path(@task)
         else
-            @task.build_department
+            @task.build_category
 
             render :new
         end
@@ -81,18 +91,9 @@ class TasksController < ApplicationController
 
 
     private
-    def task_params 
-        params.require(:task).permit(:name, 
-            :description, 
-            :price, 
-            :status, 
-            :location_type, 
-            :city, 
-            :state, 
-            :zip, 
-            :category_id
-      
-        )
+    def task_params(*args)
+        params.require(:task).permit(*args)
+        
     end 
 
     def assign_categories

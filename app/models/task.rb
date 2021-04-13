@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   validates :location_type, presence: true 
   validates :state, length: { is: 2 }
   validates :zip, length: { is: 5 }
+  accepts_nested_attributes_for :category
 
   scope :related_to, ->( task ){ where(category_id: task.category_id).limit(10) }
 

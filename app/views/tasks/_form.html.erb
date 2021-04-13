@@ -5,9 +5,6 @@
     <%= f.label :"Description:" %>
     <%= f.text_area :description, class: 'form-control' %>
     <br>
-    <%= f.label 'Category:' %>
-        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
-    <br>
     <%= f.label :"Price:" %>
     <%= f.number_field :price, step: 0.01, class: 'form-control' %>
     <br>
@@ -32,6 +29,12 @@
     <%= f.text_field :zip, class: 'form-control' %>
     <br>
     
+    <%= f.label 'Select Category:' %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+    or create a new category:
+        <%= f.fields_for :category do |category_fields|%>
+            <%= category_fields.text_field :name %>
+        <% end %>
     <div class="d-grid gap-2">
         <%= f.submit 'Submit', class: 'btn btn-custom' %>
     </div>
