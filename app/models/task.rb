@@ -11,7 +11,8 @@ class Task < ApplicationRecord
   validates :zip, length: { is: 5 }
   accepts_nested_attributes_for :category
 
-  scope :related_to, ->( task ){ where(category_id: task.category_id).limit(10) }
+  
+  scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%")}
 
   def category_attributes=(attributes)
     if attributes[:name] != ""
