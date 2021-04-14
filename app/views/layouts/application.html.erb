@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
@@ -18,6 +19,7 @@
         <a class="navbar-link <%= root_path%>" href="/logout">Log Out</a>
         <% if current_user.account_type == 2 %>
         <a class="navbar-link <%= root_path%>" href="/tasks/new">New Task</a>
+        <a class="navbar-link <%= root_path%>" href="users/<%= current_user.id %>)/tasks">Your Tasks</a>
         <% end %>
     <% else %>
       

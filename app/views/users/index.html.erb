@@ -1,0 +1,11 @@
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <h1>All Employers</h1>
+        
+        <% @employers.each do |employer| %>
+            <li><%= link_to "#{ employer.first_name } #{ employer.last_name }", user_path(employer) %></li>
+        <% end %>
+    </div>
+</div>

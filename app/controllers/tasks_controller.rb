@@ -23,6 +23,17 @@ class TasksController < ApplicationController
         @task.build_category
     end
 
+    def index 
+
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @tasks = @user.tasks 
+        else 
+            @tasks = Task.all
+        end 
+
+
+    end 
+
 
     def homepage
         render :homepage
@@ -33,7 +44,6 @@ class TasksController < ApplicationController
     end
 
     def create
-        binding.pry
         @task = Task.new(task_params(:name, 
         :description, 
         :price, 
@@ -62,33 +72,36 @@ class TasksController < ApplicationController
     def show     
         @task = Task.find(params[:id]) 
     end
+ 
 
+    def edit 
+        @task = Task.find(params[:id]) 
+    end 
 
-    def index
-        if params[:user_id]
-            @user = User.find_by_id(params[:user_id])
-            @employers = User.is_an_employer
-            @tasks = @user.tasks.includes(:employer)
+    def update 
+        
+        @task = Task.find(params[:id]) 
+        @task.update(task_params(:name, 
+        :description, 
+        :price, 
+        :status, 
+        :location_type, 
+        :city, 
+        :state, 
+        :zip, 
+        :category_id, 
+        category_attributes: [:name]))
 
-        elsif params[:category_id]
-            @category = Category.find_by_id(params[:category_id])
-            @tasks = @category.tasks.includes(:employer)
+        if @task.valid?
+            @task.save
 
+            redirect_to task_path(@task)
         else
-            @tasks = Task.all.includes(:employer)
-        end
-            
-        if params[:sort]
-            if params[:sort] == "name"
-                @tasks = @tasks.order(:name)
-            end
-        else
-            @tasks = @tasks.order(:name)
-        end
+            @task.build_category
 
-        @tasks 
-    end
-
+            render :new
+        end
+    end 
 
     private
     def task_params(*args)

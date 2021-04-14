@@ -4,12 +4,23 @@
     <div class="col-md-8">
     <div class="card-body">
         <h1 class="card-title"><%=task.name %></h1>
-     
-    
+        Description:
+        <p><%=task.description%></p>
+        Status:
+        <p><%=task.status%></p>
+        Location Type:
+        <p><%=task.location_type%></p>
+        City:
+        <p><%=task.city%></p>
+        State: 
+        <p><%=task.state%></p>
+        Zip Code:
+        <p><%=task.zip%></p>
         
-        
-
+        <%= link_to "Edit", edit_task_path %>
     </div>
     </div>
 </div>
 </div>
+<br>
+<%= link_to "Back", :back %>
