@@ -16,10 +16,11 @@
         <p><%=task.state%></p>
         Zip Code:
         <p><%=task.zip%></p>
-        
-        <%= link_to "Edit", edit_task_path %>
-        <% if task.status == 'open' %>
-        <%= link_to "Delete", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
+        <% if task.employer_id == current_user.id %>
+            <%= link_to "Edit", edit_task_path %>
+            <% if task.status == 'open' %>
+            <%= link_to "Delete", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
+            <% end %>
         <% end %>
     </div>
     </div>
