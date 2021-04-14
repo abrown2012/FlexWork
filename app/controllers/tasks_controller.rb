@@ -103,6 +103,17 @@ class TasksController < ApplicationController
         end
     end 
 
+    def destroy 
+        
+        binding.pry
+        @task = Task.find(params[:id]) 
+        if @task.destroy 
+            redirect_to root_path
+        else 
+            redirect_to back
+        end 
+    end 
+
     private
     def task_params(*args)
         params.require(:task).permit(*args)
