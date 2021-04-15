@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'tasks#homepage'
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+
+
   get '/about' => 'tasks#about'
 
   get '/logout' => 'sessions#destroy'

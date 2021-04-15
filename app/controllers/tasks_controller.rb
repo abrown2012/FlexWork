@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     end
 
     def index 
-        binding.pry
+        
         if params["search"]
             @tasks = Task.search_by_name(params["search"])
 
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
         else 
             @tasks = Task.all
-            
+
         end 
 
 
