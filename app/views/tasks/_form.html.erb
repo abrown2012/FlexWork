@@ -32,7 +32,7 @@
     <%= f.label 'Select Category:' %>
         <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
     or create a new category:
-        <%= f.fields_for :category do |category_fields|%>
+        <%= fields_for :category do |category_fields|%>
             <%= category_fields.text_field :name %>
         <% end %>
     <div class="d-grid gap-2">
