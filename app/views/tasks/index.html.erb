@@ -1,15 +1,18 @@
 <br />
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-10">
-        <h1>Your Tasks</h1>
-        
-        <% @tasks.each do |task| %>
-            <li><%= link_to task.name, task_path(task) %></li>
+<section class="bg-white">
+    
+        <h1>View Your Tasks Below</h1>
+        <div class="border-double border-4 border-light-blue-500"></div>
+                <% @tasks.each do |task| %>
+          
+            Title: <%= link_to task.name, task_path(task) %><br/>
             Status: <%= task.status %>
+           <br>
+            
         <% end %>
-    </div>
-</div>
+        </div>
+
+</section>
 
 
 
