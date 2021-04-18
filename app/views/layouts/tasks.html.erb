@@ -10,7 +10,7 @@
   </head>
   <header class="bg-gray-800" >
   <body>
-  <nav class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
+  <nav class="container px-6 py-4 mx-auto lg:flex lg:justify-between lg:items-center">
     <div class="flex items-center justify-between">
       <a class="text-xl font-bold text-white transition-colors duration-300 transform md:text-2xl hover:text-indigo-400"
       href="/">FlexWork</a>
@@ -26,6 +26,9 @@
       href="/tasks/new">New Task</a>
       <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
       href="/users/<%= current_user.id %>/tasks">Your Tasks</a>
+      <% else %>
+      <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
+      href="/users/<%= current_user.id %>/tasks">Your Applications</a>
       <% end %>
   <% else %>
     <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"

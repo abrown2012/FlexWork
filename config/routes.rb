@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  post '/tasks/:id' => 'tasks#apply'
  
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resources :tasks, only: [:index, :new, :show, :create]

@@ -27,4 +27,21 @@
 </div>
 </div>
 <br>
+<% if current_user.account_type == 1 %>
+    <% if !current_user.tasks.include?(task) %>
+        <form action="/tasks/<%=task.id%>" method="POST">
+            <input class="btn btn-primary" name="id" type="submit" value="Apply for this Task">
+            </input>
+        </form>
+        <% else %>
+            <form action="/tasks/<%=task.id%>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-success" name="id" type="submit" value="Applied">
+                </input>
+            </form>
+            </div>
+        <% end %> 
+<% end %>
+
+<br>
 <%= link_to "Back", :back %>

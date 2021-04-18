@@ -2,7 +2,7 @@ class TasksController < ApplicationController
     before_action :redirect_if_not_employer, only: [:new, :create, :edit]
     before_action :redirect_if_not_logged_in, only: [:show]
     before_action :assign_categories,    only: [:index, :new, :create, :edit]
-     
+    skip_before_action :verify_authenticity_token 
     
     def new
         if params[:user_id]
@@ -38,6 +38,14 @@ class TasksController < ApplicationController
 
 
     end 
+
+    def apply
+        binding.pry
+        if !current_user.tasks.include?(Task.find(params["id"]))
+            current_user.tasks << Task.find(params["id"])
+        end 
+        redirect_to user_path( current_user )
+    end
 
 
     def homepage
