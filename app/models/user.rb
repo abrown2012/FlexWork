@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :categories, through: :tasks 
     has_many :employer_actions, class_name: "Action", foreign_key: "employer_id"
     has_many :contractor_actions, class_name: "Action", foreign_key: "contractor_id"
-  
+    has_many :task, through: :task_applicants
     has_secure_password
     validates :password, confirmation: true, on: :create
     

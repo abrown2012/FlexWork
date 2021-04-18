@@ -1,23 +1,27 @@
 <section class="bg-white">
-
             <br />
-            <h1>Login</h1>
-            <hr />
+            <h1>Please Log In Below</h1>
+            <br>
             <%= form_for @user, url: { controller: 'sessions', action: 'create', method: 'post' } do |f| %>
                 <div class="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                <%= f.label :email %>
-                <%= f.text_field :email, class: 'form-control' %><br />
-                <%= f.label :password %>
-                <%= f.password_field :password, class: 'form-control' %><br />
-                <div class="d-grid gap-2">
-                    <%= f.submit 'Login', class: 'btn btn-outline-primary' %>
-                </div>
-                <hr />
+                    <%= f.label :email %>
+                    <%= f.text_field :email, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %><br />
+                    <%= f.label :password %>
+                    <%= f.password_field :password, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %><br />
+                    <div class="d-grid gap-2">
+                        <%= f.submit 'LOG IN', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded" %>
+                    </div>
+                    <br>
+                    OR
+                  
+                        <%= link_to 'Login with Google', '/auth/google_oauth2', method: 'post', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2  rounded' %>
+                  
+                    <br>
+                    <br>
                 <p class="text-center">Need an Account? <%= link_to 'Sign Up', signup_path %> Here</p>
-                <hr />
+                <br />
+                
             <% end %>
             </div>
-        <div class="uppercase tracking-wide text-black text-xs font-bold mb-2">
-            <%= link_to 'Login with Google', '/auth/google_oauth2', method: 'post', class: 'btn btn-custom' %>
-                </div>
+
 </section>

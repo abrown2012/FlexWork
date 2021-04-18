@@ -41,8 +41,8 @@ class TasksController < ApplicationController
 
     def apply
         binding.pry
-        if !current_user.tasks.include?(Task.find(params["id"]))
-            current_user.tasks << Task.find(params["id"])
+        if !TaskApplicant.find_by(task_id: params["id"]) && !TaskApplicant.find_by(user_id: current_user.id )
+            TaskApplicant.create(task_id: params["id"], user_id: current_user.id )
         end 
         redirect_to user_path( current_user )
     end
@@ -82,8 +82,10 @@ class TasksController < ApplicationController
     end
 
 
-    def show     
+    def show    
+         
         @task = Task.find(params[:id]) 
+        binding.pry
     end
  
 
