@@ -12,12 +12,32 @@ class SessionsController < ApplicationController
         end
 
         if @user.valid?
+            
+            if @user.created_at == @user.updated_at
+                redirect_to account_type_path
+            else
+                redirect_to root_path
+            end
             session[:user_id] = @user.id
-            redirect_to root_path
-           
         else
-            flash[:notice] = "Oops, something did not work. Please try again"
+            flash[:notice] = "Something went wrong!"
             redirect_to login_path
+        end
+    end
+
+    def account_type
+        @user = User.find_by_id(session[:user_id])
+
+        if params[:account_type]
+            binding.pry
+            if params[:account_type].to_i == 1
+                @user.account_type = 1
+            elsif params[:account_type].to_i == 2
+                @user.account_type = 2
+            end
+            
+            @user.save
+            redirect_to root_path
         end
     end
     

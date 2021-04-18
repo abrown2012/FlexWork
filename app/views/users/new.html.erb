@@ -1,16 +1,11 @@
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <br />
-        <h1>Create An Account</h1>
-        <hr />
+<div class="uppercase tracking-wide text-white text-m font-bold mb-2">
+    <br />
+    <h1>Create An Account</h1>
         <%= render partial: 'layouts/errors', locals: { object: @user } %>
         <%= render partial: 'form', locals: { user: @user } %>
-        
-        <hr />
-        <p class="text-center">Already a Member? <%= link_to 'Sign In', login_path %> Here</p>
-
-        <hr />
-
-    </div>
+    <h1>OR</h1>   
+        <%= button_to 'SIGN UP WITH GOOGLE', '/auth/google_oauth2', method: 'post', class: 'bg-blue-500 hover:bg-blue-700 w-9/12 m-24 rounded' %>
+        <p class="text-center">Already a Member? <%= link_to 'Sign In', login_path %> Here</p> 
 </div>
+
+

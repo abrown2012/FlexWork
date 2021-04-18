@@ -1,26 +1,37 @@
 
-<%= form_for user do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email, class: 'form-control' %><br />
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %><br />
-    <%= f.label :password_confirmation, 'Confirm Password' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %><br />
-    <%= f.label :first_name, 'First Name' %>
-    <%= f.text_field :first_name, class: 'form-control' %><br />
-    <%= f.label :last_name, 'Last Name' %>
-    <%= f.text_field :last_name, class: 'form-control' %><br />
-       <%= render_account_type_for_form(f) %>
-
-    <br>
-    <div class="d-grid gap-2">
-        <% if !current_user.nil? %>
-            <%= f.submit 'Save', class: 'btn btn-outline-dark' %>
-        <% else %>
-            <%= f.submit 'Sign Up', class: 'btn btn-outline-dark' %>
+<div class="items-center flex-wrap -mx-3 mb-6">
+    <div class="m-24 w-9/12 md: px-3 mb-6 md:mb-0 ">
+        <%= form_for user do |f| %>
+            <div class="uppercase tracking-wide text-white text-xs font-bold mb-2">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %><br />
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
+                <%= f.label :password_confirmation, 'Confirm Password' %>
+                <%= f.password_field :password_confirmation, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
+                <%= f.label :first_name, 'First Name' %>
+                <%= f.text_field :first_name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
+                <%= f.label :last_name, 'Last Name' %>
+                <%= f.text_field :last_name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
+            <%= render_account_type_for_form(f) %>
+            <br>
+            <br>
+                <% if !current_user.nil? %>
+                <button class="bg-blue-400 hover:bg-blue-300 rounded text-black p-1 pl-4 pr-4">
+                <p class="text-xs><%= f.submit%>SAVE</p>
+            </button>
+                    
+                <% else %>
+                <button class="bg-white hover:bg-blue-300 rounded text-black h-10 w-full p-1 pl-4 pr-4">
+                <p class="text-xs><%= f.submit%>SIGN UP</p>
+            </button>
+                    
+                <% end %>
+            </div>
+        
+            <br>
         <% end %>
     </div>
+</div>
 
-    OR 
-    <br>
-<% end %>
+
