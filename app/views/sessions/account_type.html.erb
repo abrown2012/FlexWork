@@ -1,23 +1,18 @@
-<br />
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <h1>Welcome, <%= @user.first_name %>!</h1>
-        
-
-        <p>To complete your account setup, please select an account type:</p>
-        <hr />
+<section class="bg-white">
+<br>
+    <div class="content-center text-gray-600">
+        <h1>Welcome to FlexWork, <%= @user.first_name %>!</h1>
+        <br>
+        <p>Please select what type of an account you would like to create:</p>
         <%= form_tag complete_signup_path do %>
             <%= radio_button_tag :account_type, 2, checked: true %>
             Employer
-            <br />
+            <br>
             <%= radio_button_tag :account_type, 1 %>
             Contractor
-            
-            <br /><br />
-                        <div class="d-grid gap-2">
-                <%= submit_tag 'Continue', class: 'btn btn-custom' %>
-            </div>
+            <br>
+            <br>                
+                <%= submit_tag 'Continue', class: 'mx-72 bg-blue-500 hover:bg-blue-700 text-black py-2 px-6 rounded' %>
         <% end %>
-    </div>
-</div>
+        <br>
+</section>

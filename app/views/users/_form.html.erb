@@ -13,9 +13,9 @@
                 <%= f.text_field :first_name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
                 <%= f.label :last_name, 'Last Name' %>
                 <%= f.text_field :last_name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %><br />
-            <%= render_account_type_for_form(f) %>
-            <br>
-            <br>
+                <%= render_account_type_for_form(f) %>
+                <br>
+                <br>
                 <% if !current_user.nil? %>
                 <button class="bg-blue-400 hover:bg-blue-300 rounded text-black p-1 pl-4 pr-4">
                 <p class="text-xs><%= f.submit%>SAVE</p>

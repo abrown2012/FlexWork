@@ -1,45 +1,55 @@
 <section class="bg-white">
+<br>
     <%= form_for task do |f| %>
-    <%= f.label :"Title:" %>
-    <%= f.text_field :name,  class: 'form-control' %>
-    <br>
-    <%= f.label :"Description:" %>
-    <%= f.text_area :description, class: 'form-control' %>
-    <br>
-    <%= f.label :"Price:" %>
-    <%= f.number_field :price, step: 0.01, class: 'form-control' %>
-    <br>
-    <%= f.label :"Status:" %>
-    <%= f.select :status, options_for_select(["open", "assigned", "cancelled", "closed"]), class: 'form-control'%>
-    <br>
-    <%= f.label :"Location Type:" %>
-    <%= f.select :location_type, options_for_select(["online", "physical"]), class: 'form-control' %>
-    <br>
-    <%= f.label :"City:" %>
-    <%= f.text_field :city, class: 'form-control' %>
-    <br>
-    <%= f.label :"State:" %>
-    <%= f.select :state, options_for_select(["AL", "AK", "AZ", "AR",
-    "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
-    "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", 
-    "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", 
-    "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", 
-    "UT", "VT", "VA", "WA", "WV", "WI", "WY" ]), class: 'form-control' %>
-    <br>
-    <%= f.label :"Zip Code:" %>
-    <%= f.text_field :zip, class: 'form-control' %>
-    <br>
+        <div class="uppercase tracking-wide text-gray-800 text-xs font-bold mb-2">
+        <%= f.label :"Title:" %>
+        <%= f.text_field :name,  class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
+        <%= f.label :"Description:" %>
+        <%= f.text_area :description, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-10 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
+        <%= f.label :"Price:" %>
+        <%= f.number_field :price, step: 0.01, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
+        <%= f.label :"Status:" %>
+        
+        <%= f.select :status, options_for_select(["open", "assigned", "cancelled", "closed"]), class:'bg-gray-200'%>
+        <br>
+        <br>
+        <%= f.label :"Location Type:" %>
+        <%= f.select :location_type, options_for_select(["online", "physical"])%>
+        <br>
+        <br>
+        <%= f.label :"City:" %>
+        <%= f.text_field :city, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
+        <%= f.label :"State:" %>
+        <br>
+        <%= f.select :state, options_for_select(["AL", "AK", "AZ", "AR",
+        "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
+        "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", 
+        "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", 
+        "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", 
+        "UT", "VT", "VA", "WA", "WV", "WI", "WY" ]), class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
+        <br>
+        <%= f.label :"Zip Code:" %>
+        <%= f.text_field :zip, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <br>
     
-    <%= f.label 'Select Category:' %>
+        <%= f.label 'Select Category:' %>
         <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
-    or create a new category:
-        <%= fields_for :category do |category_fields|%>
-            <%= category_fields.text_field :name %>
-        <% end %>
-    <div class="d-grid gap-2">
-        <%= f.submit 'Submit', class: 'btn btn-custom' %>
+        <br>
+        <br>
+        or create a new category:
+            <%= fields_for :category do |category_fields|%>
+                <%= category_fields.text_field :name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+            <% end %>
+        <button class="bg-blue-200 hover:bg-blue-300 rounded text-black h-10 w-full p-1 pl-4 pr-4">
+            <%= f.submit 'Submit', class: 'text-xs' %>
+        </button>
+    <% end %>
     </div>
-<% end %>
 
 </section>
 
