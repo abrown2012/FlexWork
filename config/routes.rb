@@ -22,19 +22,17 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   post '/tasks/:id' => 'tasks#apply'
+
+  get 'users/:id/applications' => 'tasks#applications'
  
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resources :tasks, only: [:index, :new, :show, :create]
   end 
   
   resources :tasks
-
-  resources :categories, only: [:index] do
-    resources :tasks, only: [:index]
-  end
   
   resources :categories, only: [:new, :index, :show, :create] do 
-    resources :tasks, only: [:index]
+    resources :tasks, only: [:index, :new, :show, :create]
   end 
 
 end

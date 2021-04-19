@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :employer, class_name: "User"
   belongs_to :category
-  has_many :applicants, through: :task_applicants
+  
   
   
   validates :name , presence: true 

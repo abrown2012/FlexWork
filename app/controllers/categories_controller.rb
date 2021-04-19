@@ -2,11 +2,13 @@ class CategoriesController < ApplicationController
     before_action :current_user
 
     def new 
+        binding.pry
         @category = Category.new
+        
     end 
 
     def create 
-       
+        binding.pry
         @category = Category.create(category_params(:name))
         if @category.valid?
             redirect_to @category

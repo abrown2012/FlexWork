@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     skip_before_action :verify_authenticity_token 
     
     def new
+        
         if params[:user_id]
             @user = User.find_by_id(params[:user_id])
 
@@ -19,18 +20,41 @@ class TasksController < ApplicationController
             end
         end
         
-        @task = Task.new
-        @task.build_category
+        if params[:category_id] && @category = Category.find(params[:category_id])
+            @task = Task.new(category_id: params[:category_id])
+        else 
+            @task = Task.new
+            @task.build_category
+        end 
     end
 
     def index 
-        
+       
         if params["search"]
             @tasks = Task.search_by_name(params["search"])
 
         elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @tasks = @user.tasks 
-
+            if @user.account_type == 1 
+                binding.pry
+                @tasks = []
+                @my_tasks = Task.all 
+                @my_tasks.each do |t|
+                    if t.contractor_id == @user.id 
+                        @tasks << t 
+                    end 
+                end 
+                
+            else 
+                @tasks = []
+                @my_tasks = Task.all 
+                @my_tasks.each do |t|
+                    if t.employer_id == @user.id 
+                        @tasks << t 
+                    end 
+                end 
+            
+            end 
+            @tasks
         else 
             @tasks = Task.all
 
@@ -40,12 +64,20 @@ class TasksController < ApplicationController
     end 
 
     def apply
-        binding.pry
-        if !TaskApplicant.find_by(task_id: params["id"]) && !TaskApplicant.find_by(user_id: current_user.id )
-            TaskApplicant.create(task_id: params["id"], user_id: current_user.id )
+        
+        current_task = Task.find(params["id"])
+        
+        if current_task.contractor_id == nil 
+           current_task.contractor_id = current_user.id 
+           current_task.status = 'TAKEN'
         end 
         redirect_to user_path( current_user )
     end
+
+    def applications
+        
+        
+    end 
 
 
     def homepage
@@ -57,6 +89,7 @@ class TasksController < ApplicationController
     end
 
     def create
+        binding.pry
         @task = Task.new(task_params(:name, 
         :description, 
         :price, 
@@ -66,17 +99,15 @@ class TasksController < ApplicationController
         :state, 
         :zip, 
         :category_id, 
-        category_attributes: [:name]))
-
+        categories_attributes: [:name]))
+        @category = Category.find(params[:category_id]) if params[:category_id]
         @task.employer_id = current_user.id
 
-        if @task.valid?
-            @task.save
-
+        if  @task.save
+            
             redirect_to task_path(@task)
         else
             @task.build_category
-
             render :new
         end
     end
@@ -85,7 +116,7 @@ class TasksController < ApplicationController
     def show    
          
         @task = Task.find(params[:id]) 
-        binding.pry
+        
     end
  
 
@@ -105,7 +136,7 @@ class TasksController < ApplicationController
         :state, 
         :zip, 
         :category_id, 
-        category_attributes: [:name]))
+        categories_attributes: [:name]))
 
         if @task.valid?
             @task.save
