@@ -55,6 +55,7 @@ class TasksController < ApplicationController
             
             end 
             @tasks
+            binding.pry
         else 
             @tasks = Task.all
 
@@ -63,13 +64,11 @@ class TasksController < ApplicationController
 
     end 
 
-    def apply
-        
-        current_task = Task.find(params["id"])
-        
-        if current_task.contractor_id == nil 
-           current_task.contractor_id = current_user.id 
-           current_task.status = 'TAKEN'
+    def take_task
+        binding.pry
+        if Task.find(params["id"]).contractor_id == nil 
+           Task.find(params["id"]).contractor_id= current_user.id 
+           Task.find(params["id"]).status = 'TAKEN'
         end 
         redirect_to user_path( current_user )
     end

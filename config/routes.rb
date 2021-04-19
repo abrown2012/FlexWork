@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  post '/tasks/:id' => 'tasks#apply'
+
+  post '/tasks/:id' => 'tasks#take_task'
 
   get 'users/:id/applications' => 'tasks#applications'
  
