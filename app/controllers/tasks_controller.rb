@@ -71,6 +71,9 @@ class TasksController < ApplicationController
             @task.contractor_id= current_user.id 
             @task.status = 'TAKEN'
             @task.save 
+        elsif @task.contractor_id= current_user.id && @task.status = 'TAKEN'
+            @task.status = 'COMPLETED'
+            @task.save 
         end 
         redirect_to user_path( current_user )
     end

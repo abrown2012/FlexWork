@@ -52,9 +52,16 @@
             </input>
         </form>
     <% else %>
-        <p>You are working on this task</p>
-            </div>
+        <div class="bg-green-500 w-full text-white font-bold py-2 px-4 rounded" >
+            YOU ARE CURRENTLY WORKING ON THIS TASK
+        </div>
+        <form action="/tasks/<%=task.id%>" method="POST">
+            <input class="btn btn-primary" name="id" type="submit" value="MARK AS COMPLETED">
+            </input>
+        </form>
+            
     <% end %> 
+    </div>
 <% end %>
 
 <br>
