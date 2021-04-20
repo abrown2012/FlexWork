@@ -1,26 +1,44 @@
-
-<div class="card mb-3" style="width: 100%;">
-<div class="row g-0">
+<br>
+<div class="items-center flex-wrap -mx-3 mb-6" >
+<div class="uppercase tracking-wide text-gray-800 text-xs font-bold mb-2">
     <div class="col-md-8">
-    <div class="card-body">
+    <div class="card-body text-base">
         <h1 class="card-title"><%=task.name %></h1>
         Description:
-        <p><%=task.description%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.description%></p>
+        </div>
         Status:
-        <p><%=task.status%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.status%></p>
+        </div>    
         Location Type:
-        <p><%=task.location_type%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.location_type%></p>
+        </div>
         City:
-        <p><%=task.city%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.city%></p>
+        </div> 
         State: 
-        <p><%=task.state%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.state%></p>
+        </div>
         Zip Code:
-        <p><%=task.zip%></p>
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.zip%></p>
+        </div>
         <% if task.employer_id == current_user.id %>
-            <%= link_to "Edit", edit_task_path %>
-            <% if task.status == 'open' %>
-            <%= link_to "Delete", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
-            <% end %>
+            <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+            <%= link_to "EDIT", edit_task_path %>
+            </button>
+            <br>
+            <% if task.status == 'OPEN' %>
+            <br>
+            <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+                <%= link_to "DELETE ", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
+            </button>
+                <% end %>
         <% end %>
     </div>
     </div>
