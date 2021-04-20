@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
         elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
             if @user.account_type == 1 
-                binding.pry
+            
                 @tasks = []
                 @my_tasks = Task.all 
                 @my_tasks.each do |t|
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
             
             end 
             @tasks
-            binding.pry
+            
         else 
             @tasks = Task.all
 
@@ -66,9 +66,11 @@ class TasksController < ApplicationController
 
     def take_task
         binding.pry
-        if Task.find(params["id"]).contractor_id == nil 
-           Task.find(params["id"]).contractor_id= current_user.id 
-           Task.find(params["id"]).status = 'TAKEN'
+        @task = Task.find(params["id"])
+        if @task.contractor_id == nil 
+            @task.contractor_id= current_user.id 
+            @task.status = 'TAKEN'
+            @task.save 
         end 
         redirect_to user_path( current_user )
     end
@@ -98,7 +100,7 @@ class TasksController < ApplicationController
         :state, 
         :zip, 
         :category_id, 
-        categories_attributes: [:name]))
+        category_attributes: [:name]))
         @category = Category.find(params[:category_id]) if params[:category_id]
         @task.employer_id = current_user.id
 
@@ -135,7 +137,7 @@ class TasksController < ApplicationController
         :state, 
         :zip, 
         :category_id, 
-        categories_attributes: [:name]))
+        category_attributes: [:name]))
 
         if @task.valid?
             @task.save

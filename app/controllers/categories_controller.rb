@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
         binding.pry
         @category = Category.new
         
+        
     end 
 
     def create 

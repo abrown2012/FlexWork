@@ -30,17 +30,13 @@
 <% if current_user.account_type == 1 %>
     <% if !current_user.tasks.include?(task) %>
         <form action="/tasks/<%=task.id%>" method="POST">
-            <input class="btn btn-primary" name="id" type="submit" value="Complete this Task">
+            <input class="btn btn-primary" name="id" type="submit" value="Select this Task">
             </input>
         </form>
-        <% else %>
-            <form action="/tasks/<%=task.id%>" method="POST">
-                <input type="hidden" name="_method" value="DELETE">
-                <input class="btn btn-success" name="id" type="submit" value="Applied">
-                </input>
-            </form>
+    <% else %>
+        <p>You are working on this task</p>
             </div>
-        <% end %> 
+    <% end %> 
 <% end %>
 
 <br>

@@ -1,6 +1,6 @@
 <section class="bg-white">
 <br>
-    <%= form_for task do |f| %>
+    <%= form_for @task do |f| %>
         <div class="uppercase tracking-wide text-gray-800 text-xs font-bold mb-2">
         <%= f.label :"Title:" %>
         <%= f.text_field :name,  class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
@@ -42,11 +42,12 @@
         <br>
         <br>
         or create a new category:
-            <%= fields_for :category_attributes do |category_fields|%>
-                
-                <%= category_fields.text_field :name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
-            <% end %>
-            <br>
+        <br>
+        <%= f.fields_for :category do |category_fields|%>
+            
+            <%= category_fields.text_field :name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <% end %>
+        <br>
         <button class="bg-blue-200 hover:bg-blue-300 rounded text-black h-10 w-full p-1 pl-4 pr-4">
             <%= f.submit 'Submit', class: 'text-xs' %>
         </button>
