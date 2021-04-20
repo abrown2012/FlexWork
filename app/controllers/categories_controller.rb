@@ -40,7 +40,11 @@ class CategoriesController < ApplicationController
     end 
 
     def destroy 
-        @category.destroy
+        if @category.valid?
+            @category.destroy
+        else 
+            redirect_to back
+        end 
     end 
 
     def category_params(*args)

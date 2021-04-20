@@ -12,6 +12,10 @@
         <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
             <p><%=task.status%></p>
         </div>    
+        Price:
+        <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <p><%=task.price%></p>
+        </div> 
         Location Type:
         <div class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
             <p><%=task.location_type%></p>
@@ -29,16 +33,30 @@
             <p><%=task.zip%></p>
         </div>
         <% if task.employer_id == current_user.id %>
-            <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
-            <%= link_to "EDIT", edit_task_path %>
-            </button>
-            <br>
             <% if task.status == 'OPEN' %>
-            <br>
-            <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
-                <%= link_to "DELETE ", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
-            </button>
-                <% end %>
+                <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+                    <%= link_to "EDIT", edit_task_path %>
+                </button>
+                <br>
+                <br>
+                <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+                    <%= link_to "DELETE ", @task, method: "delete", data: {confirm: "Are you sure you would like to delete this task?"} %>
+                </button>
+                
+            <% elsif task.status == 'TAKEN' %>
+                <div class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+                    A CONTRACTOR IS ALREADY WORKING ON THIS TASK. YOU CAN NO LONGER EDIT OR DELETE IT.  
+                </div>
+            <% elsif task.status == 'COMPLETED' %>
+                <div class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+                    A CONTRACTOR ALREADY FINISHED THIS TASK. YOU CAN NO LONGER EDIT OR DELETE IT.  
+                </div>
+                <br>
+                <form action="/tasks/<%=task.id%>" method="POST">
+                <input class="bg-yellow-500 w-full text-white font-bold py-2 px-4 rounded " name="id" type="submit" value="MARK AS CLOSED TO PAY YOUR CONTRACTOR">
+                </input>
+            </form>
+            <% end %>
         <% end %>
     </div>
     </div>
@@ -51,7 +69,7 @@
             <input class="btn btn-primary" name="id" type="submit" value="Select this Task">
             </input>
         </form>
-    <% else %>
+    <% elsif task.status == "TAKEN" %>
         <div class="bg-green-500 w-full text-white font-bold py-2 px-4 rounded" >
             YOU ARE CURRENTLY WORKING ON THIS TASK
         </div>
@@ -59,7 +77,10 @@
             <input class="btn btn-primary" name="id" type="submit" value="MARK AS COMPLETED">
             </input>
         </form>
-            
+    <% elsif task.status == "COMPLETED" %>
+        <div class="bg-green-500 w-full text-white font-bold py-2 px-4 rounded" >
+            YOU ALREADY COMPLETED THIS TASK. WAIT FOR THE EMPLOYER TO CONFIRM COMPLETION 
+        </div>
     <% end %> 
     </div>
 <% end %>

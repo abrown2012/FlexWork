@@ -8,6 +8,7 @@
             <div class="text-center box-border h-50 w-45 p-4 border-4 rounded border-gray-800 ">
                 Title: <%= link_to task.name, task_path(task) %><br/>
                 Status: <%= task.status %>
+                Price: $<%= task.price %>
                 <br>
                 <%= link_to "GET MORE INFO", task_path(task) %>
                 <br>
@@ -17,6 +18,7 @@
             <div class="text-center box-border h-50 w-45 p-4 border-4 rounded border-gray-800 ">
                 Title: <%= link_to task.name, task_path(task) %><br/>
                 Status: <%= task.status %>
+                Price: $ <%= task.price %>
                 <br>
                 <%= link_to "GET MORE INFO", task_path(task) %>
                 <br>
