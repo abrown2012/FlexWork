@@ -77,8 +77,14 @@ class TasksController < ApplicationController
         elsif @task.employer_id == current_user.id && @task.status == 'COMPLETED'
             @task.status = 'CLOSED'
             @task.save 
+            binding.pry
+            current_user.account_balance = current_user.account_balance - @task.price 
+            current_user.save 
+            @contractor = User.find(@task.contractor_id)
+            @contractor.account_balance = @contractor.account_balance + @task.price 
+            @contractor.save 
         end 
-        redirect_to user_path( current_user )
+        redirect_to user_task_path( current_user )
     end
 
     def applications

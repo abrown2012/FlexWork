@@ -29,13 +29,14 @@ class SessionsController < ApplicationController
         @user = User.find_by_id(session[:user_id])
 
         if params[:account_type]
-            binding.pry
             if params[:account_type].to_i == 1
                 @user.account_type = 1
+                @user.account_balance = 0
             elsif params[:account_type].to_i == 2
                 @user.account_type = 2
+                @user.account_balance = 5000.0
             end
-            
+        
             @user.save
             redirect_to root_path
         end

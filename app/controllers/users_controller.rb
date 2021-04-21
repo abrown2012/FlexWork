@@ -9,10 +9,17 @@ class UsersController < ApplicationController
     end
 
     def create
-        binding.pry
+        
         @user = User.new(user_params)
-        if @user.save 
-            @user_balance = 5000
+        if  @user.valid?
+            binding.pry
+            if @user.account_type == "2"
+                @user.account_balance = 5000.0
+                @user.save 
+            else 
+                @user.account_balance = 0
+                @user.save
+            end 
             session[:user_id] = @user.id 
             redirect_to @user, notice: "Your account was successfully created!"
         else 
