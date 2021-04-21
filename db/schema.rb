@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_182454) do
+ActiveRecord::Schema.define(version: 2021_04_21_031934) do
 
   create_table "categories", force: :cascade do |t|
     t.text "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_182454) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "provider"
     t.text "uid"
+    t.integer "account_balance"
   end
 
 end

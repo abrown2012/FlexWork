@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         binding.pry
         @user = User.new(user_params)
         if @user.save 
+            @user_balance = 5000
             session[:user_id] = @user.id 
             redirect_to @user, notice: "Your account was successfully created!"
         else 
