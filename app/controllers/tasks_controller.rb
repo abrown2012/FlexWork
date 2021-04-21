@@ -131,6 +131,10 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id]) 
     end 
 
+    def highest_paid
+        @tasks = Task.highest_paid
+    end 
+
     def update 
         
         @task = Task.find(params[:id]) 

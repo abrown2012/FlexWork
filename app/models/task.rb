@@ -14,6 +14,8 @@ class Task < ApplicationRecord
 
   
   scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%")}
+  scope :highest_paid, -> {where(status: "OPEN").order(price: :desc).limit(10) }
+  
 
   def category_attributes=(attributes)
     if attributes[:name] != ""

@@ -11,10 +11,23 @@
                 <p class="text-xs><%= f.submit%>Search</p>
             </button>
             <br>
+            <br>
+            <div class="text-white">
+                OR
+            </div>
+            <br>
+            <button class="bg-blue-400 hover:bg-blue-300 rounded text-black p-1 pl-4 pr-4">
+                <%= link_to "See highest paying tasks", highest_paid_path %>
+            </button>
+            <br>
+
+            <br>
+
         <% end %>
-                
-            
+      
         </div>
+
+    
     </section>
     <section class="bg-white">
         <div class="max-w-5xl px-6 py-16 mx-auto">

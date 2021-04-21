@@ -1,0 +1,29 @@
+<br />
+<section class="bg-white">
+    <br>
+    <h1>View Tasks Below:</h1>
+    <br>
+    <% @tasks.each do |task| %>
+        <% if task.status == 'OPEN' %>
+            <div class="text-center box-border h-50 w-45 p-4 border-4 rounded border-gray-800 ">
+                Title: <%= link_to task.name, task_path(task) %><br/>
+                Status: <%= task.status %>
+                Price: $<%= task.price %>
+                <br>
+                <%= link_to "GET MORE INFO", task_path(task) %>
+                <br>
+            </div>
+            <br>
+        <% elsif task.contractor_id == current_user.id || task.employer_id == current_user.id %>   
+            <div class="text-center box-border h-50 w-45 p-4 border-4 rounded border-gray-800 ">
+                Title: <%= link_to task.name, task_path(task) %><br/>
+                Status: <%= task.status %>
+                Price: $ <%= task.price %>
+                <br>
+                <%= link_to "GET MORE INFO", task_path(task) %>
+                <br>
+            </div>
+            <br>
+        <% end %>
+    <% end %>
+</section>

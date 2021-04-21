@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about' => 'tasks#about'
 
   get '/logout' => 'sessions#destroy'
+  get '/highest_paid' => 'tasks#highest_paid'
  
   get '/newuser/account_type' => 'sessions#account_type', as: "account_type"
   post '/newuser/account_type' => 'sessions#account_type', as: "complete_signup"
