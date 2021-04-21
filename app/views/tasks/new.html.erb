@@ -7,7 +7,8 @@
                 <%= render partial: 'layouts/errors', locals: { object: @task } %>
                 <%= render partial: 'form', locals: { task: @task, categories: @categories, user: current_user } %>
                 <br />
-                <%= link_to 'Cancel', user_path( current_user ), class: 'btn btn-secondary' %>
+                
+                <%= link_to 'Cancel', user_path( current_user ), class: 'text-white' %>
                 <br />
             </div>
         </div>

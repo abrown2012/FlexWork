@@ -1,4 +1,25 @@
 <section class="bg-white">
-<br>
-    <h2>Hello, <%=@user.first_name%>!</h2>
+    <div class="uppercase tracking-wide text-gray-800 text-m font-bold mb-2">
+        <br />
+        <h1>Account Details:</h1>
+            First Name: <br>
+            <%= @user.first_name %><br><br>
+            Last Name: <br>
+            <%= @user.last_name %><br><br>
+            Email: <br>
+            <%= @user.email %><br><br>
+            Account Type: 
+            <% if @user.account_type == 2 %><br>
+            Employer
+            <% else %>
+            Contractor <br>
+            <% end %>
+            <br>
+            <button class="bg-gray-800 w-full text-white font-bold py-2 px-4 rounded ">
+            <%= link_to "EDIT", edit_user_path %>
+            <br>
+        </button>
+    <br>
+    </div>
+    <br>
 </section>
