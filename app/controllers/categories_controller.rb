@@ -18,6 +18,26 @@ class CategoriesController < ApplicationController
         @category = Category.find(params[:id]) 
     end
 
+    
+
+    def hottest_categories
+        new_array = []
+        categories = Category.all
+        categories.each do |cat|
+            cat.tasks.each do |cat_t|
+                if cat_t.status = "OPEN"
+                    new_array.push(cat.name)
+                end 
+            end
+            new_array
+        end
+        counts = Hash.new 0
+        new_array.each do |category|
+              counts[category] += 1
+            end
+        @hottest_cat = counts.max_by{|k,v| v} 
+    end 
+
 
     def index
         @categories = Category.all.includes(tasks: [:employer])

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  get '/hottest_categories' => 'categories#hottest_categories'
+
 
   post '/tasks/:id' => 'tasks#take_task'
 
