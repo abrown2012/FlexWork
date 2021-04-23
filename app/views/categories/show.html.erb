@@ -1,6 +1,8 @@
-
-
-
-<h4><%= @category.name %></h4>
-
-
+<h1><%= @category.name %></h1>
+<br>
+<h2>Here are employers hiring in this category:</h2>
+<br>
+<br>
+<% @category.employers.uniq.each do |emp| %>
+    <li><%="#{emp.first_name } #{emp.last_name }"%></li>
+<% end %>

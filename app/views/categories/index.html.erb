@@ -1,0 +1,14 @@
+<br />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <h1>Click on each category to see corresponding Employers</h1>
+        <br>
+        <h2>Categories:</h2>
+        
+        <% @categories.each do |cat| %>
+            <li><%= link_to "#{cat.name }" , category_path(cat) %></li>
+            
+        <% end %>
+    </div>
+</div>
