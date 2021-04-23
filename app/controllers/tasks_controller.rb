@@ -65,7 +65,7 @@ class TasksController < ApplicationController
     end 
 
     def take_task
-        binding.pry
+        
         @task = Task.find(params["id"])
         if @task.contractor_id == nil 
             @task.contractor_id= current_user.id 
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
         elsif @task.employer_id == current_user.id && @task.status == 'COMPLETED'
             @task.status = 'CLOSED'
             @task.save 
-            binding.pry
+            
             current_user.account_balance = current_user.account_balance - @task.price 
             current_user.save 
             @contractor = User.find(@task.contractor_id)
@@ -86,12 +86,6 @@ class TasksController < ApplicationController
         end 
         redirect_to user_task_path( current_user )
     end
-
-    def applications
-        
-        
-    end 
-
 
     def homepage
         render :homepage
@@ -102,7 +96,7 @@ class TasksController < ApplicationController
     end
 
     def create
-        binding.pry
+        
         @task = Task.new(task_params(:name, 
         :description, 
         :price, 
